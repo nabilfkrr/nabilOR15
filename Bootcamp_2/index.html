@@ -1,0 +1,165 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mari Berkenalan</title>
+
+    <style>
+        body{
+            font-family: 'Times New Roman', Time, serif;
+            background: linear-gradient(to right, #749ceb, #b7bdd9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container{
+            background-color: white;
+            padding: 25px;
+            width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h1{
+            color: #333;
+        }
+
+        button{
+            padding: 10px 15px;
+            margin: 10px 5px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 14px;
+        }
+
+        button:hover{
+            opacity: 0.8;
+        }
+
+        #bio{
+            margin-top: 15px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        input{
+            padding: 10px;
+            width: 70%;
+            margin-top: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        ul{
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+
+        li{
+            background-color: #f1f1f1;
+            margin: 5px 0;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container" id="card">
+
+        <h1>Mari Berkenalan</h1>
+
+        <!-- FITUR 1 -->
+        <button id="btnBio">Tampilkan Biodata</button>
+
+        <div id="bio"></div>
+
+        <!-- FITUR 2 -->
+        <button id="btnWarna">Ubah Warna Kartu</button>
+
+        <!-- FITUR 3 -->
+        <div>
+            <input type="text" id="inputTugas" placeholder="Masukkan teks">
+            <button id="btnTambah">Tambah</button>
+        </div>
+
+        <ul id="list"></ul>
+
+    </div>
+
+    <script>
+
+        // Variabel
+        const btnBio = document.getElementById("btnBio");
+        const btnWarna = document.getElementById("btnWarna");
+        const btnTambah = document.getElementById("btnTambah");
+
+        const bio = document.getElementById("bio");
+        const card = document.getElementById("card");
+
+        const inputTugas = document.getElementById("inputTugas");
+        const list = document.getElementById("list");
+
+        // FITUR 1
+        function tampilBio() {
+            bio.innerHTML = `
+                Nama : Nabil Fikri <br>
+                Jurusan : Informatika <br>
+                Hobi : Coding
+            `;
+        }
+
+        btnBio.addEventListener("click", tampilBio);
+
+        // FITUR 2
+        function ubahWarna() {
+
+            const warna = [
+                "#FFD3B6",
+                "#FFAAA5",
+                "#A8E6CF",
+                "#DCEDC1",
+                "#A0C4FF"
+            ];
+
+            let random = Math.floor(Math.random() * warna.length);
+
+            card.style.backgroundColor = warna[random];
+        }
+
+        btnWarna.addEventListener("click", ubahWarna);
+
+        // FITUR 3
+        function tambahList() {
+
+            let teks = inputTugas.value;
+
+            if(teks !== ""){
+
+                const li = document.createElement("li");
+
+                li.textContent = teks;
+
+                list.appendChild(li);
+
+                inputTugas.value = "";
+            }
+        }
+
+        btnTambah.addEventListener("click", tambahList);
+
+    </script>
+
+</body>
+</html>
+```
